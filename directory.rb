@@ -1,16 +1,16 @@
 # Put students into an array
 students = [
-  "Dr. Hannibal Lecter",
-  "Dath Vader",
-  "Nurse Ratched",
-  "Michael Corleone",
-  "Alex DeLarge",
-  "The Wicked Witch of the West",
-  "Terminator",
-  "Freddie Kruger",
-  "The Joker",
-  "Joffrey Baratheon",
-  "Norman Bates",
+  { name: "Dr. Hannibal Lecter", cohort: :november},
+  { name: "Dath Vader", cohort: :november},
+  { name: "Nurse Ratched", cohort: :november},
+  { name: "Michael Corleone", cohort: :november},
+  { name: "Alex DeLarge", cohort: :november},
+  { name: "The Wicked Witch of the West", cohort: :november},
+  { name: "Terminator", cohort: :november},
+  { name: "Freddie Kruger", cohort: :november},
+  { name: "The Joker", cohort: :november},
+  { name: "Joffrey Baratheon", cohort: :november},
+  { name: "Norman Bates", cohort: :november}
 ]
 
 # Header method
@@ -20,10 +20,10 @@ def print_header
 end
 
 # Method to print students
-def print(names)
+def print(students)
   # Loop to print each student in the students array
-  names.each do |name|
-    puts name
+  students.each do |student|
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
