@@ -1,17 +1,27 @@
-# Put students into an array
-students = [
-  { name: "Dr. Hannibal Lecter", cohort: :november},
-  { name: "Dath Vader", cohort: :november},
-  { name: "Nurse Ratched", cohort: :november},
-  { name: "Michael Corleone", cohort: :november},
-  { name: "Alex DeLarge", cohort: :november},
-  { name: "The Wicked Witch of the West", cohort: :november},
-  { name: "Terminator", cohort: :november},
-  { name: "Freddie Kruger", cohort: :november},
-  { name: "The Joker", cohort: :november},
-  { name: "Joffrey Baratheon", cohort: :november},
-  { name: "Norman Bates", cohort: :november}
-]
+# Input studnetgs method
+# Getting students
+# And creating student array
+def input_students
+  puts "Please enter the names of teh students"
+  puts "To finish, hit return twice"
+
+  # Create an empty array
+  students = []
+
+  # Get the first name
+  name = gets.chomp
+
+  # While the name is not empty repead this code
+  while !name.empty? do
+    # Add the student hash to the array
+    students << {name: name, cohort: :november}
+    puts "Now we have #{students.count} students"
+    # Get another name from the user
+    name = gets.chomp
+  end
+  # Return the array of students
+  students
+end
 
 # Header method
 def print_header
@@ -34,6 +44,7 @@ def print_footer(names)
 end
 
 # Call methods
+students = input_students 
 print_header
 print(students)
 print_footer(students)
