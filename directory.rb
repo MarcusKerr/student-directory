@@ -22,14 +22,14 @@ end
 
 # Header method
 def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+  puts "The students of Villains Academy".center(100)
+  puts "-------------".center(100)
 end
 
 # Print pref method
 # Ask user how they would like to print the directory
 def print_pref(students)
-  puts "How would you like to print the directory ('by letter'/'less than 12'/'all')?"
+  puts "How would you like to print the directory ('by letter'/'less than 12'/'all')?".center(100)
   print_pref = gets.chomp
   if print_pref == "all"
     print(students)
@@ -76,7 +76,7 @@ def print(students)
 
   index = 0
   until index == students.length
-    puts "#{index + 1}. #{students[index][:name]} (#{students[index][:cohort]} cohort) #{students[index][:fav_food]}"
+    puts "#{index + 1}. #{students[index][:name]} (#{students[index][:cohort]} cohort) #{students[index][:fav_food]}".center(100)
     index += 1
   end
 
@@ -88,7 +88,7 @@ end
 # Footer method
 def print_footer(names)
   # Print total number of students
-  puts "Overall we, have #{names.count} great students"
+  puts "Overall we, have #{names.count} great students".center(100)
 end
 
 # Call methods
