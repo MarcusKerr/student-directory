@@ -2,7 +2,7 @@
 # Getting students
 # And creating student array
 def input_students
-  puts "Please enter the names of teh students"
+  puts "Please enter the names of the students"
   puts "To finish, hit return twice"
 
   # Create an empty array
@@ -32,8 +32,8 @@ end
 # Method to print students
 def print(students)
   # Loop to print each student in the students array
-  students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)"
+  students.each_with_index do |student, index|
+    puts "#{index+ 1}. #{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
@@ -44,7 +44,7 @@ def print_footer(names)
 end
 
 # Call methods
-students = input_students 
+students = input_students
 print_header
 print(students)
 print_footer(students)
