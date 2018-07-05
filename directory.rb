@@ -128,7 +128,7 @@ def print(students)
 
   index = 0
   until index == students.length
-    puts "#{index + 1}. #{students[index][:name]} (#{students[index][:cohort]} cohort) #{students[index][:fav_food]}".center(75)
+    puts "#{index + 1}. #{students[index][:name]} (#{students[index][:cohort]} cohort)}".center(75)
     index += 1
   end
 
@@ -139,8 +139,16 @@ end
 
 # Footer method
 def print_footer(names)
+
+  plu_or_sing = "students"
+
+  # Only one student
+  if names.count == 1
+    plu_or_sing = "student"
+  end
+
   # Print total number of students
-  puts "Overall we, have #{names.count} great students".center(75)
+  puts "Overall we, have #{names.count} great #{plu_or_sing}".center(75)
 end
 
 # Call methods
