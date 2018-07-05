@@ -35,14 +35,14 @@ def input_students
 
     # Get another name from the user
     puts "Enter a name"
-    name = gets.chomp
+    name = gets.delete "\n"
     if name.empty?
       break
     end
 
     # Get another cohort from user
     puts "Enter cohort"
-    cohort = gets.chomp.capitalize.to_sym
+    cohort = gets.chop.capitalize.to_sym
 
     if !(months.include?(cohort))
       cohort = " -".to_sym
@@ -67,7 +67,7 @@ end
 # Ask user how they would like to print the directory
 def print_pref(students)
   puts "How would you like to print the directory ('by letter'/'less than 12'/'by cohort'/'all')?".center(75)
-  print_pref = gets.chomp
+  print_pref = gets.delete "\n"
   if print_pref == "all"
     print(students)
   elsif print_pref == "by letter"
@@ -85,7 +85,7 @@ end
 # Specific letter
 def print_by_letter(students)
     puts "Enter first letter of name"
-    letter = gets.chomp
+    letter = gets.delete "\n"
 
     students_by_letter = []
     students.each do |student|
@@ -111,7 +111,7 @@ end
 # Print by cohort
 def by_cohort(students)
   puts "Enter cohort you would like to view"
-  cohort = gets.chomp.capitalize.to_sym
+  cohort = gets.chop.capitalize.to_sym
   students_by_cohort = []
   students.map { |student|
     if student[:cohort] == cohort
