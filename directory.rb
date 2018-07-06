@@ -3,7 +3,6 @@
 # And creating student array
 def input_students
   puts "Please enter the names of the students"
-  puts "To finish, leave name empty"
 
   # Create an empty array
   students = []
@@ -32,12 +31,26 @@ def input_students
 
   # While the name is not empty repeat this code
   while true do
+    
+    # Message which only shows if name array is not empty 
+    if !(students.empty?)
+      puts "To finish, leave name empty"
+    end 
 
     # Get another name from the user
     puts "Enter a name"
     name = gets.delete "\n"
+
+    # If the name is empty
+    # And if the students array is empty 
+    # Do not exit, call method again
     if name.empty?
-      break
+      if students.empty?
+        input_students
+      else
+        break
+      end
+    break
     end
 
     # Get another cohort from user
