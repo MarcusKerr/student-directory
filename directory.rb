@@ -21,6 +21,7 @@
 def print_menu
   puts "1. Input students"
   puts "2. Show the students"
+  puts "3. Save students"
   puts "9. Exit"
 end
 
@@ -29,6 +30,20 @@ def show_students
   print_header
   print_pref
   print_footer
+end
+
+# Save students
+def save_students
+  # Open the file for writing
+  file = File.open("students.csv", "w")
+
+  # Iterate over the array of students
+  @students.each do |student|
+    student_data = [student [:name], student[:cohort]]
+    csv_line = student_data.join(" , ")
+    file.puts csv_line
+  end
+  file.close
 end
 
 # Interactive menu
@@ -48,6 +63,8 @@ def interactive_menu
         input_students
       when "2"
         show_students
+      when "3"
+        save_students
       when "9"
         exit
       else 
@@ -111,16 +128,17 @@ end
 def print_pref
   puts "How would you like to print the directory ('by letter'/'less than 12'/'by cohort'/'all')?".center(75)
   print_pref = gets.delete "\n"
-  if print_pref == "all"
-    print_students(@students)
-  elsif print_pref == "by letter"
-    print_by_letter
-  elsif print_pref == "less than 12"
-    less_than_12
-  elsif print_pref == "by cohort"
-    by_cohort
-  else
-    print_pref
+  case print_pref
+    when "all"
+      print_students(@students)
+    when "by letter"
+      print_by_letter
+    when "less than 12"
+      less_than_12
+    when "by cohort"
+      by_cohort
+    else
+      print_pref
   end
 end
 
@@ -188,8 +206,5 @@ def print_footer
   puts "Overall we, have #{@students.count} great #{plu_or_sing}".center(75)
 end
 
-
-
 # Call interactive menu method
 interactive_menu
-
