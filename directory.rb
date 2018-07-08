@@ -1,11 +1,47 @@
-# Input studnetgs method
-# Getting students
-# And creating student array
-def input_students
+# Interactive menu
+# Lets user choose what path they want to take through the program
+def interactive_menu
+
+  # Create an empty array of students
+  students = []
+
+  # Continue to ask stiudents what to do
+  loop do
+
+    # Print menu and ask students what to do
+    puts "1. Input students"
+    puts "2. Show the students"
+    puts "9. Exit"
+
+    # Read input and save it
+    selection = gets.chomp
+
+    # Do what the user asked
+    case selection
+      when "1"
+        
+        # Call method
+        students = input_students(students)
+      when "2"
+        print_header
+        print_pref(students)
+        print_footer(students)
+      when "9"
+        exit
+      else 
+        puts "Invalid conmmand"
+    end
+  end
+end
+
+
+# Input studnets method
+# Getting student
+# Add them to student array
+def input_students(students)
   puts "Please enter the names of the students"
 
-  # Create an empty array
-  students = []
+  # Array of month symbols
   months = [
     :January,
     :February,
@@ -21,13 +57,6 @@ def input_students
     :December
   ]
 
-  # # Get the first name
-  # puts "Enter a name"
-  # name = gets.chomp
-  #
-  # # Get the first cohort
-  # puts "Enter cohort"
-  # cohort = gets.chomp.to_sym
 
   # While the name is not empty repeat this code
   while true do
@@ -66,6 +95,7 @@ def input_students
     puts "Now we have #{students.count} students"
 
   end
+
   # Return the array of students
   students
 end
@@ -76,7 +106,7 @@ def print_header
   puts "-------------".center(75)
 end
 
-# Print pref method
+# Print preference method
 # Ask user how they would like to print the directory
 def print_pref(students)
   puts "How would you like to print the directory ('by letter'/'less than 12'/'by cohort'/'all')?".center(75)
@@ -94,7 +124,7 @@ def print_pref(students)
   end
 end
 
-# Only print students whos name begins with
+# Only print students who's name begins with
 # Specific letter
 def print_by_letter(students)
     puts "Enter first letter of name"
@@ -110,7 +140,7 @@ def print_by_letter(students)
 end
 
 # Only print students whos name is less
-# than 12 characters
+# Than 12 characters
 def less_than_12(students)
     name_less_than_12 = []
     students.each do |student|
@@ -136,23 +166,18 @@ end
 
 # Method to print students
 # Loop to print each student in the students
-# According to print pref result
 def print(students)
-
   index = 0
   until index == students.length
-    puts "#{index + 1}. #{students[index][:name]} (#{students[index][:cohort]} cohort)}".center(75)
+    puts "#{index + 1}. #{students[index][:name]} (#{students[index][:cohort]} cohort)".center(75)
     index += 1
   end
-
-  # students.each_with_index do |student, index|
-  #   puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
-  # end
 end
 
 # Footer method
 def print_footer(names)
 
+  # Plural 
   plu_or_sing = "students"
 
   # Only one student
@@ -164,8 +189,5 @@ def print_footer(names)
   puts "Overall we, have #{names.count} great #{plu_or_sing}".center(75)
 end
 
-# Call methods
-students = input_students
-print_header
-print_pref(students)
-print_footer(students)
+# Call interactive menu method
+interactive_menu
